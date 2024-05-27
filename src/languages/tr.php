@@ -13,4 +13,6 @@ $lang = [
     'quantity' => 'Miktar',
     'price' => 'Fiyat',
     'buy' => 'Satın Al',
+    'no_products_available'=> 'Ürün bulunamadı',
+    'prd_name' => 'Ürün Adı',
 ];

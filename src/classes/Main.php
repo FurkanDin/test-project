@@ -10,12 +10,13 @@ class Main
     {
         global $lang, $smarty;
 
-        $lang = $_SESSION['lang'] ? $_SESSION['lang'] : 'tr';
+        $lang = isset($_SESSION['lang']) ? $_SESSION['lang'] : 'tr';
 
-        if (isset($_GET['lang'])) {
+        if (isset($_GET['lang']) && !empty($_GET['lang'])) {
             $lang = $_GET['lang'];
             $_SESSION['lang'] = $lang;
         }
+
 
         require_once __DIR__ . "/../languages/{$lang}.php";
 
@@ -32,6 +33,10 @@ class Main
     public function run()
     {
         global $smarty;
+
+        // Capture errors to be displayed
+        $errors = isset($_SESSION['errors']) ? $_SESSION['errors'] : [];
+        $smarty->assign('errors', $errors);
 
         $this->router->get('/', function () {
             $home = new Home();

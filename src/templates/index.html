@@ -19,6 +19,11 @@
     </header>
 
     <body class="d-flex flex-column h-100">
+        {if $errors|@count > 0}
+        {foreach from=$errors item=error}
+            <div class="alert alert-danger">{$error|escape}</div>
+        {/foreach}
+    {/if}
         {if $error}
             <div class="alert alert-danger" role="alert">
                 {$error}
